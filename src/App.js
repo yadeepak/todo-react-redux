@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { useSelector } from 'react-redux';
+import Form from './Components/InputForm';
+import Lists from './Components/Lists';
+const App = () => {
+	const todoList = useSelector(state => state.list);
+	console.log(todoList);
+	return (
+		<div className='d-md-flex justify-content-center  mt-5'>
+			<div className='col-md-4 col-12'>
+				<Form />
+			</div>
+			<div className='col-md-4 col-12'>
+				<Lists todoList={todoList} />
+			</div>
+		</div>
+	);
+};
 
 export default App;
